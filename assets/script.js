@@ -1,5 +1,5 @@
 // using Moment.js to display the current day & time
-var currentDay = moment().format('dddd, MMMM Do YYYY, h:mm a');
+var currentDay = moment().format('dddd, MMMM Do YYYY');
 $('#currentDay').text(currentDay);
 
 // function that changes the colour of the text boxes depending on past, present or future
@@ -9,15 +9,15 @@ function colourPicker() {
 
   $('.description').each(function () {
     var currentEL = $(this);
-    var plannerHour = parseInt($(currentEL).attr('data-hour'));
+    var plannerHour = parseInt(currentEL.attr('data-hour'));
 
     // if statement comparing the data-hour to the current time and adding the appropriate classes
     if (plannerHour > currentHour) {
-      $(currentEL).addClass('future');
+      currentEL.addClass('future');
     } else if (plannerHour === currentHour) {
-      $(currentEL).addClass('present');
+      currentEL.addClass('present');
     } else {
-      $(currentEL).addClass('past');
+      currentEL.addClass('past');
     }
   });
 }
@@ -28,8 +28,8 @@ colourPicker();
 // when the save button is clicked it stores the content from the text input field into local storage
 $('.saveBtn').click(function () {
   var currentEL = $(this);
-  var textInput = $(currentEL).siblings('.description').val();
-  var hour = $(currentEL).siblings('.hour').text();
+  var textInput = currentEL.siblings('.description').val();
+  var hour = currentEL.siblings('.hour').text();
 
   localStorage.setItem(hour, textInput);
 });
@@ -38,16 +38,17 @@ $('.saveBtn').click(function () {
 function showSavedInputs() {
   $('.hour').each(function () {
     var currentEL = $(this);
-    var savedHour = $(currentEL).text();
+    var savedHour = currentEL.text();
     // variable that gets the local
     var savedTextInput = localStorage.getItem(savedHour);
 
     // if the text input field isn't empty then add the value (content) of the local storage
     if (savedTextInput !== null) {
-      $(currentEL).siblings('.description').val(savedTextInput);
+      currentEL.siblings('.description').val(savedTextInput);
       return;
     }
   });
 }
+
 // calling the showSavedInputs function
 showSavedInputs();
