@@ -30,4 +30,4 @@ https://grantrt.github.io/Work-Day-Scheduler/
 
 ### Deployed website:
 
-![image](https://user-images.githubusercontent.com/93350224/150347903-c0894d5e-b865-4db4-bc3b-d79d6c999b5d.png)
+![image](https://user-images.githubusercontent.com/93350224/150348538-ced2dd4f-51a9-4a11-8dea-60031bd20a8a.png)
